@@ -10,6 +10,8 @@ Created in Blender 3.5 and Godot 3.5
 
 [1 point] Assignment turned in on time
 [1] Repository contains a descriptive README.md
+[1] No (script) syntax errors
+[1] No other runtime errors
 [2] Includes a user-controlled third-person 3D player
 [1] The camera follows the movement of the player
 [2] The player's model is animated
