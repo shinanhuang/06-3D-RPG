@@ -89,7 +89,6 @@ transform = Transform( 0.986354, 0, -0.164634, 0, 1, 0, 0.164634, 0, 0.986354, 4
 script = ExtResource( 7 )
 
 [node name="Area" type="Area" parent="NPC"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 collision_layer = 2
 collision_mask = 2
 
