@@ -4646,7 +4646,7 @@ nodes/Idle_Run/position = Vector2( 470, 100 )
 nodes/Run/node = SubResource( 21 )
 nodes/Run/position = Vector2( 130, 210 )
 nodes/output/position = Vector2( 760, 150 )
-node_connections = [ "output", 0, "Idle_Run", "Idle_Run", 0, "Idle", "Idle_Run", 1, "Run" ]
+node_connections = [ "Idle_Run", 0, "Idle", "Idle_Run", 1, "Run", "output", 0, "Idle_Run" ]
 
 [node name="Player" type="KinematicBody"]
 
@@ -4889,7 +4889,7 @@ skin = SubResource( 3 )
 material/0 = SubResource( 4 )
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Root/Skeleton"]
-transform = Transform( -0.824615, 0.127786, 0.551082, 0.432636, -0.485188, 0.759885, 0.364478, 0.86502, 0.344808, -0.660899, 1.32843, 0.237323 )
+transform = Transform( -0.858907, 0.112222, 0.499695, 0.407132, -0.442299, 0.799137, 0.310693, 0.889817, 0.334204, -0.656712, 1.30654, 0.281295 )
 bone_name = "right_hand_thumb_1"
 
 [node name="blasterJ" parent="Root/Skeleton/BoneAttachment" instance=ExtResource( 3 )]

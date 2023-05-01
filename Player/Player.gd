@@ -33,13 +33,13 @@ func _input(event):
 	
 func get_input():
 	var input_dir = Vector3()
-	if Input.is_action_just_pressed("forward"):
-		input_dir -= Camera.global_transform.basis.z
-	if Input.is_action_just_pressed("back"):
+	if Input.is_action_pressed("forward"):
+		input_dir += -Camera.global_transform.basis.z
+	if Input.is_action_pressed("backward"):
 		input_dir += Camera.global_transform.basis.z
-	if Input.is_action_just_pressed("left"):
-		input_dir -= Camera.global_transform.basis.x
-	if Input.is_action_just_pressed("right"):
+	if Input.is_action_pressed("left"):
+		input_dir += -Camera.global_transform.basis.x
+	if Input.is_action_pressed("right"):
 		input_dir += Camera.global_transform.basis.x
 	input_dir = input_dir.normalized()
 	return input_dir
