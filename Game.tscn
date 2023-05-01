@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=6]
 [ext_resource path="res://NPC/NPC.gd" type="Script" id=7]
 [ext_resource path="res://UI/Dialogue.gd" type="Script" id=8]
+[ext_resource path="res://UI/UI.gd" type="Script" id=9]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 100, 0.5, 100 )
@@ -28,6 +29,9 @@ material = SubResource( 3 )
 radius = 0.5
 height = 1.0
 
+[sub_resource type="SphereShape" id=5]
+radius = 4.90041
+
 [node name="Game" type="Spatial"]
 
 [node name="Ground" type="StaticBody" parent="."]
@@ -40,7 +44,7 @@ mesh = SubResource( 1 )
 shape = SubResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( -0.759317, 0, -0.650721, 0, 1, 0, 0.650721, 0, -0.759317, 41.6549, 0, 0 )
+transform = Transform( -0.999007, 0, 0.0445613, 0, 1, 0, -0.0445613, 0, -0.999007, 41.6549, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="Pivot" type="Position3D" parent="Player"]
@@ -81,10 +85,19 @@ transform = Transform( 0.663456, 0, -0.748215, 0, 1, 0, 0.748215, 0, 0.663456, -
 transform = Transform( -0.130803, 0, -0.991409, 0, 1, 0, 0.991409, 0, -0.130803, 16.9366, 7.23657, -58.3619 )
 
 [node name="NPC" parent="." instance=ExtResource( 6 )]
-transform = Transform( -0.999844, 0, -0.0176444, 0, 1, 0, 0.0176444, 0, -0.999844, 0, 0, 0 )
+transform = Transform( 0.986354, 0, -0.164634, 0, 1, 0, 0.164634, 0, 0.986354, 42.6494, 0, -22.2696 )
 script = ExtResource( 7 )
 
+[node name="Area" type="Area" parent="NPC"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="NPC/Area"]
+shape = SubResource( 5 )
+
 [node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 9 )
 
 [node name="Background" type="ColorRect" parent="UI"]
 anchor_right = 1.0
@@ -98,13 +111,15 @@ margin_bottom = 30.0
 text = "Score:"
 valign = 1
 
-[node name="Timer" type="Label" parent="UI"]
+[node name="Time" type="Label" parent="UI"]
 margin_left = 512.0
 margin_right = 1014.0
 margin_bottom = 31.0
 text = "Timer: 00:00"
 align = 2
 valign = 1
+
+[node name="Timer" type="Timer" parent="UI"]
 
 [node name="Dialogue" type="Control" parent="UI"]
 anchor_right = 1.0
@@ -125,3 +140,7 @@ anchor_bottom = 1.0
 margin_top = -20.0
 margin_bottom = 10.0
 bbcode_enabled = true
+
+[connection signal="body_entered" from="NPC/Area" to="NPC" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="NPC/Area" to="NPC" method="_on_Area_body_exited"]
+[connection signal="timeout" from="UI/Timer" to="UI" method="_on_Timer_timeout"]
