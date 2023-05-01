@@ -8,6 +8,7 @@ var gravity = -9.0
 var speed = 0.2
 var max_speed = 4
 var mouse_sensitivity = 0.002
+var target = null
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -27,6 +28,9 @@ func _physics_process(_delta):
 	
 	$AnimationTree.set("parameters/Idle_Run/blend_amount", current_speed/max_speed)
 	velocity = move_and_slide(velocity, Vector3.UP, true)
+	
+	if Input.is_action_just_pressed("shoot") and target != null and target.is_in_group("target"):
+		target.die()
 	
 func _input(event):
 	if event is InputEventMouseMotion:
