@@ -32,6 +32,7 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		Pivot.rotate_x(event.relative.y * mouse_sensitivity)
+		Pivot.rotation_degrees.x = clamp(Pivot.rotation_degrees.x, -30, 15)
 		
 func get_input():
 	var input_dir = Vector3()
