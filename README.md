@@ -18,6 +18,7 @@ Created in Blender 3.5 and Godot 3.5
 [1] The game includes terrain and/or obstacles
 [1] The game includes a hand-held item or weapon  with which the player can influence the world
 [2] The game has a clear objective
+[1] Includes at least one AI agent
 ## Created By
 
 Shinan Huang
